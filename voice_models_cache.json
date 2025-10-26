@@ -1,0 +1,14 @@
+{
+  "Momo_Audio.mp3": {
+    "model_id": "6816eaacd2c64bcfba07077da6148138",
+    "title": "streamer-audio",
+    "created_at": "2025-10-25T18:11:47.119795",
+    "state": "trained"
+  },
+  "hi me in 1 year.mp3": {
+    "model_id": "6d2dd3d8f29d404687646627a9359554",
+    "title": "streamer-audio",
+    "created_at": "2025-10-25T23:01:38.789933",
+    "state": "trained"
+  }
+}
