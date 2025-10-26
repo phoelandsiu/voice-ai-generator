@@ -1,52 +1,40 @@
 # AI Coding Assistant Instructions
 
-This document provides essential context for AI coding assistants working in this audio project codebase.
+This file gives the immediate, discoverable context an AI coding assistant needs to be productive in this repository.
 
-## Project Overview
+## Quick safety rule (must-read)
+- For development and testing in this repo, run only the two entry-point scripts: `api_server.py` and `file-directory.py`.
+- Do not run other project files directly unless asked and granted context about side effects.
 
-This is a Python-based audio processing project that interacts with external APIs. The project is currently in early development stages.
+Example (run from project root):
 
-## Key Components
+```bash
+# from zsh / macOS
+python api_server.py
+python file-directory.py
+```
 
-### Model Generation
-- Located in `model_generation.py`
-- Handles audio model generation using external API services
-- Uses environment variables for API configuration
+## Why this restriction
+- The project is early-stage and contains files that may expect environment variables, external APIs, or incomplete implementations. Restricting execution reduces accidental API calls, leaked secrets, or partially-implemented behavior.
 
-## Environment & Configuration
+## Short project overview (discoverable facts)
+- Language: Python (single-module prototype)
+- Key files:
+  - `model_generation.py` — placeholder module for audio model generation using external APIs.
+  - `api_server.py` — (entry point) runs the API server for the voice/model endpoints.
+  - `file-directory.py` — (entry point) utility that performs local file/directory operations used during development.
+  - `.env` — contains API credentials used by the code (use `os.getenv()` to read).
 
-- API credentials are managed through environment variables in `.env`
-- Key environment variables:
-  - `API_KEY`: Required for external API authentication
+## Environment & running
+- Credentials are expected in environment variables. The repo contains `.env` for local convenience; prefer `os.getenv()` in code and load `.env` in local dev only.
+- If you need to run either allowed script and it requires environment variables, set them in your shell (don't commit secrets).
 
-## Development Workflow
+## What to change in this file
+- Keep this file up-to-date when new safe entry points are added. If you add a script intended to be run directly, add it to the "Quick safety rule" list and provide a one-line justification.
 
-### Setup
-1. Ensure Python environment is properly configured
-2. Set up required environment variables (see `.env.example` for template)
-3. Install required dependencies (TODO: Add requirements.txt)
-
-### Best Practices
-1. Environment Variables:
-   - Always use environment variables for sensitive data
-   - Access environment variables using `os.getenv()`
-
-## Areas for Development
-
-Current focus areas that need attention:
-1. Implementation of model generation functionality in `model_generation.py`
-2. Setting up proper dependency management
-3. Adding error handling for API interactions
-4. Implementing logging system
-5. Adding tests
-
-## TODO
-- [ ] Add requirements.txt for dependency management
-- [ ] Complete model generation implementation
-- [ ] Add proper error handling
-- [ ] Set up testing framework
-- [ ] Add logging system
-- [ ] Create documentation for API usage
+## Notes for AI assistants
+- Prefer reading `api_server.py` and `file-directory.py` before suggesting runtime changes. Use `model_generation.py` only to implement logic when asked; do not execute it by itself.
+- When adding examples, include exact paths and commands (zsh) and note environment variables required.
 
 ---
-Note: This is an initial version of the instructions based on the current state of the project. As the project evolves, these instructions should be updated to reflect new patterns and conventions.
+If anything in these instructions is unclear or you want the run-safety rule relaxed/expanded, tell me which files to review and I'll update this guidance.
